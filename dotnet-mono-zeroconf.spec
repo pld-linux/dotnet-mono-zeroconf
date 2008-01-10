@@ -17,6 +17,7 @@ BuildRequires:	libtool
 BuildRequires:	mono-csharp >= 1.1.16.1
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(monoautodeps)
+Requires:	dotnet-mono-zeroconf-provider
 ExcludeArch:	i386
 # can't be noarch because of pkgconfigdir (use /usr/share/pkgconfig?)
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
