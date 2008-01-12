@@ -1,5 +1,6 @@
 %include	/usr/lib/rpm/macros.mono
-Summary:	Mono.Zeroconf provides an easy to use API that covers the most common operations for mDNS
+Summary:	Mono.Zeroconf - easy to use API that covers the most common operations for mDNS
+Summary(pl.UTF-8):	Mono.Zeroconf - łatwe w użyciu API pokrywające większość operacji mDNS
 Name:		dotnet-mono-zeroconf
 Version:	0.7.3
 Release:	1
@@ -17,34 +18,49 @@ BuildRequires:	libtool
 BuildRequires:	mono-csharp >= 1.1.16.1
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(monoautodeps)
-Requires:	dotnet-mono-zeroconf-provider
+Requires:	%{name}-provider = %{version}-%{release}
 ExcludeArch:	i386
 # can't be noarch because of pkgconfigdir (use /usr/share/pkgconfig?)
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Mono.Zeroconf provides an easy to use API that covers the most common operations for mDNS.
+Mono.Zeroconf provides an easy to use API that covers the most common
+operations for mDNS.
+
+%description -l pl.UTF-8
+Mono.Zeroconf udostępnia łatwe w użyciu API pokrywające większość
+popularnych operacji mDNS.
 
 %package provider-avahi
 Summary:	Avahi provider for Mono.Zeroconf
+Summary(pl.UTF-8):	Łącznik Avahi dla biblioteki Mono.Zeroconf
 Group:		Libraries
-Provides:	dotnet-mono-zeroconf-provider
+Provides:	%{name}-provider = %{version}-%{release}
 Requires:	%{name} = %{version}-%{release}
 
 %description provider-avahi
 This package provides an Avahi Zeroconf provider for Mono.Zeroconf.
 
+%description provider-avahi -l pl.UTF-8
+Ten pakiet udostępnia łącznik z Avahi dla biblioteki Mono.Zeroconf.
+
 %package provider-mDNSResponder
 Summary:	Bonjour provider for Mono.Zeroconf
+Summary(pl.UTF-8):	Łącznik Bonjour dla biblioteki Mono.Zeroconf
 Group:		Libraries
-Provides:	dotnet-mono-zeroconf-provider
+Provides:	%{name}-provider = %{version}-%{release}
 Requires:	%{name} = %{version}-%{release}
 
 %description provider-mDNSResponder
-This package provides an mDNSResponder Zeroconf provider for Mono.Zeroconf.
+This package provides an mDNSResponder Zeroconf provider for
+Mono.Zeroconf.
+
+%description provider-mDNSResponder -l pl.UTF-8
+Ten pakiet udostępnia łącznik z usługą Zeroconf mDNSRespondera dla
+biblioteki Mono.Zeroconf.
 
 %prep
-%setup -qn mono-zeroconf-%{version}
+%setup -q -n mono-zeroconf-%{version}
 
 %build
 %{__libtoolize}
