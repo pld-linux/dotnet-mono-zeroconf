@@ -3,7 +3,7 @@ Summary:	Mono.Zeroconf - easy to use API that covers the most common operations 
 Summary(pl.UTF-8):	Mono.Zeroconf - łatwe w użyciu API pokrywające większość operacji mDNS
 Name:		dotnet-mono-zeroconf
 Version:	0.7.3
-Release:	1
+Release:	2
 # no real license information, just included COPYING
 License:	LGPL v2
 Group:		Libraries
