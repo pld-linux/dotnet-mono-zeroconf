@@ -2,13 +2,12 @@
 Summary:	Mono.Zeroconf - easy to use API that covers the most common operations for mDNS
 Summary(pl.UTF-8):	Mono.Zeroconf - łatwe w użyciu API pokrywające większość operacji mDNS
 Name:		dotnet-mono-zeroconf
-Version:	0.7.3
-Release:	2
-# no real license information, just included COPYING
-License:	LGPL v2
+Version:	0.7.6
+Release:	1
+License:	MIT
 Group:		Libraries
 Source0:	http://banshee-project.org/files/mono-zeroconf/mono-zeroconf-%{version}.tar.bz2
-# Source0-md5:	d63ccff9ac8554f24a066a51e244df32
+# Source0-md5:	7c7c841d6e10ad803bb879511ab9747b
 URL:		http://mono-project.com/Mono.Zeroconf
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.9
@@ -17,7 +16,6 @@ BuildRequires:	dotnet-avahi-devel >= 0.6.0
 BuildRequires:	mono-csharp >= 1.1.16.1
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(monoautodeps)
-BuildRequires:	sed >= 4.0
 Requires:	%{name}-provider = %{version}-%{release}
 ExcludeArch:	i386
 # can't be noarch because of pkgconfigdir (use /usr/share/pkgconfig?)
@@ -79,9 +77,6 @@ biblioteki Mono.Zeroconf.
 %prep
 %setup -q -n mono-zeroconf-%{version}
 
-# use %{_prefix}/lib/mono
-sed -i -e '1ilibdir=$(prefix)/lib' src/Mono.Zeroconf/Makefile.am
-
 %build
 %{__libtoolize}
 %{__aclocal} -I .
@@ -107,6 +102,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/mzclient
 # .mdb to -debug?
 %{_prefix}/lib/mono/gac/Mono.Zeroconf
+%{_prefix}/lib/mono/gac/policy.1.0.Mono.Zeroconf
+%{_prefix}/lib/mono/gac/policy.2.0.Mono.Zeroconf
 %dir %{_libdir}/mono-zeroconf
 %{_libdir}/mono-zeroconf/MZClient.exe
 # -debug?
