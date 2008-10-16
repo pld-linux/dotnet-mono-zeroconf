@@ -1,0 +1,11 @@
+diff -urN mono-zeroconf-0.7.6/src/mono-zeroconf.pc.in mono-zeroconf-0.7.6.new/src/mono-zeroconf.pc.in
+--- mono-zeroconf-0.7.6/src/mono-zeroconf.pc.in	2008-01-08 22:07:08.000000000 +0100
++++ mono-zeroconf-0.7.6.new/src/mono-zeroconf.pc.in	2008-10-17 00:16:07.000000000 +0200
+@@ -1,6 +1,6 @@
+ prefix=@prefix@
+ exec_prefix=${prefix}
+-libdir=@libdir@
++libdir=${exec_prefix}/lib
+ 
+ Name: Mono.Zeroconf
+ Description: Mono library for universal cross platform Zeroconf support via a unified API with built in support for mdnsd and optional support for Avahi.
