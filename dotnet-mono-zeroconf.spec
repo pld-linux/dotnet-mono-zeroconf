@@ -1,9 +1,14 @@
+#
+# Conditional build:
+%bcond_with	mdns		# build with mDNSResponder support
+#
 %include	/usr/lib/rpm/macros.mono
+#
 Summary:	Mono.Zeroconf - easy to use API that covers the most common operations for mDNS
 Summary(pl.UTF-8):	Mono.Zeroconf - łatwe w użyciu API pokrywające większość operacji mDNS
 Name:		dotnet-mono-zeroconf
 Version:	0.7.6
-Release:	1
+Release:	2
 License:	MIT
 Group:		Libraries
 Source0:	http://banshee-project.org/files/mono-zeroconf/mono-zeroconf-%{version}.tar.bz2
@@ -83,7 +88,8 @@ biblioteki Mono.Zeroconf.
 %{__autoconf}
 %{__automake}
 %configure \
-	--enable-avahi
+	--enable-avahi \
+	--%{?with_mdns:en}%{?!with_mdns:dis}able-mdnsresponder
 
 %{__make} -j1
 
@@ -122,9 +128,11 @@ rm -rf $RPM_BUILD_ROOT
 # -debug?
 %{_libdir}/mono-zeroconf/Mono.Zeroconf.Providers.Avahi.dll.mdb
 
+%if %{with mdns}
 %files provider-mDNSResponder
 %defattr(644,root,root,755)
 %{_libdir}/mono-zeroconf/Mono.Zeroconf.Providers.Bonjour.dll
 %{_libdir}/mono-zeroconf/Mono.Zeroconf.Providers.Bonjour.dll.config
 # -debug?
 %{_libdir}/mono-zeroconf/Mono.Zeroconf.Providers.Bonjour.dll.mdb
+%endif
