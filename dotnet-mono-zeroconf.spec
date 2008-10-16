@@ -8,11 +8,12 @@ Summary:	Mono.Zeroconf - easy to use API that covers the most common operations 
 Summary(pl.UTF-8):	Mono.Zeroconf - łatwe w użyciu API pokrywające większość operacji mDNS
 Name:		dotnet-mono-zeroconf
 Version:	0.7.6
-Release:	2
+Release:	3
 License:	MIT
 Group:		Libraries
 Source0:	http://banshee-project.org/files/mono-zeroconf/mono-zeroconf-%{version}.tar.bz2
 # Source0-md5:	7c7c841d6e10ad803bb879511ab9747b
+Patch0:		%{name}-pkgconfig.patch
 URL:		http://mono-project.com/Mono.Zeroconf
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.9
@@ -81,6 +82,7 @@ biblioteki Mono.Zeroconf.
 
 %prep
 %setup -q -n mono-zeroconf-%{version}
+%patch0 -p1
 
 %build
 %{__libtoolize}
