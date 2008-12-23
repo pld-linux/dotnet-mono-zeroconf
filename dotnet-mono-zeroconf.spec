@@ -7,12 +7,12 @@
 Summary:	Mono.Zeroconf - easy to use API that covers the most common operations for mDNS
 Summary(pl.UTF-8):	Mono.Zeroconf - łatwe w użyciu API pokrywające większość operacji mDNS
 Name:		dotnet-mono-zeroconf
-Version:	0.7.6
-Release:	3
+Version:	0.8.0
+Release:	1
 License:	MIT
 Group:		Libraries
 Source0:	http://banshee-project.org/files/mono-zeroconf/mono-zeroconf-%{version}.tar.bz2
-# Source0-md5:	7c7c841d6e10ad803bb879511ab9747b
+# Source0-md5:	b713ea75cd8a7f3b49ddd59b902bc7e0
 Patch0:		%{name}-pkgconfig.patch
 URL:		http://mono-project.com/Mono.Zeroconf
 BuildRequires:	autoconf >= 2.50
@@ -112,6 +112,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_prefix}/lib/mono/gac/Mono.Zeroconf
 %{_prefix}/lib/mono/gac/policy.1.0.Mono.Zeroconf
 %{_prefix}/lib/mono/gac/policy.2.0.Mono.Zeroconf
+%{_prefix}/lib/mono/gac/policy.3.0.Mono.Zeroconf
 %dir %{_libdir}/mono-zeroconf
 %{_libdir}/mono-zeroconf/MZClient.exe
 # -debug?
@@ -126,9 +127,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files provider-avahi
 %defattr(644,root,root,755)
-%{_libdir}/mono-zeroconf/Mono.Zeroconf.Providers.Avahi.dll
+%{_libdir}/mono-zeroconf/Mono.Zeroconf.Providers.AvahiDBus.dll
 # -debug?
-%{_libdir}/mono-zeroconf/Mono.Zeroconf.Providers.Avahi.dll.mdb
+%{_libdir}/mono-zeroconf/Mono.Zeroconf.Providers.AvahiDBus.dll.mdb
 
 %if %{with mdns}
 %files provider-mDNSResponder
