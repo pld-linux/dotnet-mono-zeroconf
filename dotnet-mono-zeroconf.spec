@@ -8,7 +8,7 @@ Summary:	Mono.Zeroconf - easy to use API that covers the most common operations 
 Summary(pl.UTF-8):	Mono.Zeroconf - łatwe w użyciu API pokrywające większość operacji mDNS
 Name:		dotnet-mono-zeroconf
 Version:	0.9.0
-Release:	1
+Release:	2
 License:	MIT
 Group:		Libraries
 Source0:	http://banshee-project.org/files/mono-zeroconf/mono-zeroconf-%{version}.tar.bz2
@@ -91,6 +91,8 @@ biblioteki Mono.Zeroconf.
 %{__automake}
 %configure \
 	--enable-avahi \
+	--libdir=/%{_prefix}/lib \
+	--libexecdir=%{_libdir} \
 	--%{?with_mdns:en}%{?!with_mdns:dis}able-mdnsresponder
 
 %{__make} -j1
@@ -114,29 +116,29 @@ rm -rf $RPM_BUILD_ROOT
 %{_prefix}/lib/mono/gac/policy.2.0.Mono.Zeroconf
 %{_prefix}/lib/mono/gac/policy.3.0.Mono.Zeroconf
 %{_prefix}/lib/mono/gac/policy.4.0.Mono.Zeroconf
-%dir %{_libdir}/mono-zeroconf
-%{_libdir}/mono-zeroconf/MZClient.exe
+%dir %{_prefix}/lib/mono-zeroconf
+%{_prefix}/lib/mono-zeroconf/MZClient.exe
 # -debug?
-%{_libdir}/mono-zeroconf/MZClient.exe.mdb
+%{_prefix}/lib/mono-zeroconf/MZClient.exe.mdb
 
 %files devel
 %defattr(644,root,root,755)
 %dir %{_prefix}/lib/mono/mono-zeroconf
 %{_prefix}/lib/mono/mono-zeroconf/Mono.Zeroconf.dll
-%{_pkgconfigdir}/mono-zeroconf.pc
+%{_prefix}/lib/pkgconfig/mono-zeroconf.pc
 %{_libdir}/monodoc/sources/mono-zeroconf-docs.*
 
 %files provider-avahi
 %defattr(644,root,root,755)
-%{_libdir}/mono-zeroconf/Mono.Zeroconf.Providers.AvahiDBus.dll
+%{_prefix}/lib/mono-zeroconf/Mono.Zeroconf.Providers.AvahiDBus.dll
 # -debug?
-%{_libdir}/mono-zeroconf/Mono.Zeroconf.Providers.AvahiDBus.dll.mdb
+%{_prefix}/lib/mono-zeroconf/Mono.Zeroconf.Providers.AvahiDBus.dll.mdb
 
 %if %{with mdns}
 %files provider-mDNSResponder
 %defattr(644,root,root,755)
-%{_libdir}/mono-zeroconf/Mono.Zeroconf.Providers.Bonjour.dll
-%{_libdir}/mono-zeroconf/Mono.Zeroconf.Providers.Bonjour.dll.config
+%{_prefix}/lib/mono-zeroconf/Mono.Zeroconf.Providers.Bonjour.dll
+%{_prefix}/lib/mono-zeroconf/Mono.Zeroconf.Providers.Bonjour.dll.config
 # -debug?
-%{_libdir}/mono-zeroconf/Mono.Zeroconf.Providers.Bonjour.dll.mdb
+%{_prefix}/lib/mono-zeroconf/Mono.Zeroconf.Providers.Bonjour.dll.mdb
 %endif
