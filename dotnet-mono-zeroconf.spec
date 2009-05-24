@@ -8,7 +8,7 @@ Summary:	Mono.Zeroconf - easy to use API that covers the most common operations 
 Summary(pl.UTF-8):	Mono.Zeroconf - łatwe w użyciu API pokrywające większość operacji mDNS
 Name:		dotnet-mono-zeroconf
 Version:	0.9.0
-Release:	2
+Release:	3
 License:	MIT
 Group:		Libraries
 Source0:	http://banshee-project.org/files/mono-zeroconf/mono-zeroconf-%{version}.tar.bz2
@@ -103,6 +103,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+mkdir -p $RPM_BUILD_ROOT%{_datadir}
+mv $RPM_BUILD_ROOT{%{_prefix}/lib/pkgconfig,%{_datadir}}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -125,7 +128,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %dir %{_prefix}/lib/mono/mono-zeroconf
 %{_prefix}/lib/mono/mono-zeroconf/Mono.Zeroconf.dll
-%{_prefix}/lib/pkgconfig/mono-zeroconf.pc
+%{_datadir}/pkgconfig/mono-zeroconf.pc
 %{_libdir}/monodoc/sources/mono-zeroconf-docs.*
 
 %files provider-avahi
