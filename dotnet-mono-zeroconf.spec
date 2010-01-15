@@ -93,7 +93,7 @@ biblioteki Mono.Zeroconf.
 	--enable-avahi \
 	--libdir=/%{_prefix}/lib \
 	--libexecdir=%{_libdir} \
-	--%{?with_mdns:en}%{?!with_mdns:dis}able-mdnsresponder
+	--%{?with_mdns:en}%{!?with_mdns:dis}able-mdnsresponder
 
 %{__make} -j1
 
