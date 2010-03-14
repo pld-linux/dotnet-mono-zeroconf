@@ -19,6 +19,7 @@ BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	avahi-compat-libdns_sd-devel
 BuildRequires:	dotnet-avahi-devel >= 0.6.0
+BuildRequires:	libtool
 BuildRequires:	mono-csharp >= 1.1.16.1
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(monoautodeps)
@@ -104,7 +105,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-mkdir -p $RPM_BUILD_ROOT%{_datadir}
+install -d $RPM_BUILD_ROOT%{_datadir}
 mv $RPM_BUILD_ROOT{%{_prefix}/lib/pkgconfig,%{_datadir}}
 
 %clean
