@@ -2,7 +2,6 @@
 # Conditional build:
 %bcond_with	mdns		# build with mDNSResponder support
 #
-%include	/usr/lib/rpm/macros.mono
 #
 Summary:	Mono.Zeroconf - easy to use API that covers the most common operations for mDNS
 Summary(pl.UTF-8):	Mono.Zeroconf - łatwe w użyciu API pokrywające większość operacji mDNS
