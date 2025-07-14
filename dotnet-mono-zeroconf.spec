@@ -83,7 +83,7 @@ biblioteki Mono.Zeroconf.
 
 %prep
 %setup -q -n mono-zeroconf-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 %{__libtoolize}
